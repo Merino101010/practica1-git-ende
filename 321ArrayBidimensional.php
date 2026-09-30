@@ -8,6 +8,7 @@ for ($i = 1; $i <= 6; $i++) { //filas
         $hayNumeroDentro = in_array(random_int(100, 999), $matriz, false);
         if ($hayNumeroDentro == false) {
             $matriz[$i][$j] = $numero;
+            //echo $matriz[$i][$j];
         } else {
             //volver a meter numero random y comprobar
         }
