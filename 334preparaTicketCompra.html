@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formulario Suma</title>
+    <style></style>
+  </head>
+  <body>
+    <form action="334preparaTicketCompra.php" method="post">
+      <label for="producto1">PRODUCTO1</label>
+      <input
+        type="text"
+        id="producto1Nombre"
+        name="productoNombre[]"
+        required
+      />
+      <input type="number" id="coste1" name="productoCoste[]" required />
+      <input type="number" id="cantidad1" name="productoCantidad[]" required />
+
+      <label for="producto2">PRODUCTO2</label>
+      <input
+        type="text"
+        id="producto2Nombre"
+        name="productoNombre[]"
+        required
+      />
+
+      <input type="number" id="coste2" name="productoCoste[]" required />
+      <input type="number" id="cantidad2" name="productoCantidad[]" required />
+
+      <label for="producto2">PRODUCTO3</label>
+      <input
+        type="text"
+        id="producto3Nombre"
+        name="productoNombre[]"
+        required
+      />
+      <input type="number" id="coste3" name="productoCoste[]" required />
+      <input type="number" id="cantidad3" name="productoCantidad[]" required />
+
+      <button type="submit">Enviar</button>
+    </form>
+  </body>
+</html>
