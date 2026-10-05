@@ -32,6 +32,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "<th>precio con iva</th>";
         echo "<th>precio total</th>";
         echo "</tr>";
+
+        /*Por $productos as $key => $value */
+        /*$values as $value => $atribute*/
+        /*if (atribute===("nombre)"){
+        }*/
+        /*if (atribute===("precio)"){
+        }*/
         foreach ($productos as $code =>  ['nombre' => $nombre, 'precio' => $precioSinIva]) {
 
 
