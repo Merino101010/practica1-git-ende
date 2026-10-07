@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formulario Suma</title>
+    <style></style>
+  </head>
+  <body>
+    <form method="post" action="Act328.php">
+      <label for="nombre">Nombre completo:</label>
+
+      <input type="text" id="nombre" name="nombre" required />
+
+      <label for="email">Correo electrónico:</label>
+
+      <input type="email" id="email" name="email" required />
+
+      <label for="isbn">Libro:</label>
+
+      <select id="isbn" name="isbn" required>
+        <option value="">-- Selecciona un libro --</option>
+
+        <option value="999-84-376-0494-7">Jane Eyre</option>
+
+        <option value="988-84-204-7183-9">A Tale of Two Cities</option>
+
+        <option value="977-03-074-0000-8">1984</option>
+
+        <option value="777-84-975-9220-8">Fahrenheit 451</option>
+
+        <option value="666-66-333-2222-4">The Lord of the Rings</option>
+      </select>
+
+      <button type="submit">Enviar Solicitud</button>
+    </form>
+  </body>
+</html>

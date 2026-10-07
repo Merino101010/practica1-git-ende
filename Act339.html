@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <style></style>
+  <body>
+    <form action="Act339TarifaEnvio.php" method="post">
+      <label>Dame el peso de tu paquete</label>
+      <input type="text" id="peso" name="peso" required />
+      <label>Selecciona las zona de destino</label>
+
+      <select id="destino" name="destino" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="peninsula">Península</option>
+        <option value="baleares">Baleares</option>
+        <option value="canarias">Canarias</option>
+      </select>
+
+      <button type="submit">enviar</button>
+    </form>
+  </body>
+</html>
