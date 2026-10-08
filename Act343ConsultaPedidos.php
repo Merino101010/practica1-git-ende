@@ -96,18 +96,22 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                 }
                     
             }
-        }
-        elseif($cliente === 0){
+        }elseif($cliente == 0){
         foreach($clientes as $clave => $valor){
             foreach($pedidos as $pedido ){
                
 
-               echo "<p>$clave</p>";
+              
                if($pedido["id_cliente"] == $clave){
+                
+                    echo "<p>$clave</p>";
                     $producto = $pedido["producto"];
                     $importe = $pedido["importe"];
+                    $id_cliente = $pedido["id_cliente"];
                     echo "<p>  producto $producto</p>";
                     echo "<p>  producto $importe</p>";
+                    echo "<p>  id_cliente $id_cliente </p>";
+                    
                }
                 
                 }
@@ -118,7 +122,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         echo "<p>El usuario o lo que estas buscando  no existe</p>";
         }
-            
+           
+         
     
     }
     
