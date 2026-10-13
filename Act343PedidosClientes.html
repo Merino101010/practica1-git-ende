@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <h1>Pedidos por cliente</h1>
+
+    <form action="Act343ConsultaPedidos.php" method="post">
+
+        <p>
+
+            <label for="cliente">Cliente:</label>
+
+            <select id="cliente" name="cliente">
+
+                <option value="0">Todos los clientes</option>
+
+                <option value="1">Tecnosur S.L.</option>
+
+                <option value="2">Librería Atlas</option>
+
+                <option value="3">Panadería La Espiga</option>
+
+                <option value="4">Clínica Dental Sol</option>
+
+            </select>
+
+        </p>
+
+        <p>
+
+            <label for="desde">Desde:</label>
+
+            <input type="date" id="desde" name="desde">
+
+        </p>
+
+        <p>
+
+            <label for="hasta">Hasta:</label>
+
+            <input type="date" id="hasta" name="hasta">
+
+        </p>
+
+        <p><input type="submit" value="Consultar"></p>
+
+    </form>
+</body>    
+</html>

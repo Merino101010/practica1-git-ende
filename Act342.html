@@ -1,27 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>Biblioteca</title></head>
+<body>
+
 <h1>Búsqueda en la biblioteca</h1>
-
 <form action="Act342BuscaLibros.php" method="post">
-  <p>
-    <label for="busqueda">Texto a buscar:</label>
-
-    <input type="text" id="busqueda" name="busqueda" />
-  </p>
-
-  <p>
-    <label for="campo">Buscar en:</label>
-
-    <select id="campo" name="campo">
-      <option value="titulo">Título</option>
-
-      <option value="autor">Autor</option>
-    </select>
-  </p>
-
-  <p>
-    <input type="checkbox" id="disponibles" name="disponibles" value="1" />
-
-    <label for="disponibles">Mostrar solo los libros disponibles</label>
-  </p>
-
-  <p><input type="submit" value="Buscar" /></p>
+    <input type="hidden" name="accion" value="buscar">
+    <p>
+        <label for="busqueda">Texto a buscar:</label>
+        <input type="text" id="busqueda" name="busqueda">
+    </p>
+    <p>
+        <label for="campo">Buscar en:</label>
+        <select id="campo" name="campo">
+            <option value="titulo">Título</option>
+            <option value="autor">Autor</option>
+        </select>
+    </p>
+    <p>
+        <input type="checkbox" id="disponibles" name="disponibles" value="1">
+        <label for="disponibles">Mostrar solo los libros disponibles</label>
+    </p>
+    <p><input type="submit" value="Buscar"></p>
 </form>
+
+<h1>Actualizar un libro</h1>
+<form action="Act342BuscaLibros.php" method="post">
+    <input type="hidden" name="accion" value="actualizar">
+    <p><label>ID del libro: <input type="number" name="id" required></label></p>
+    <p><label>Nuevo título: <input type="text" name="titulo"></label></p>
+    <p><label>Nuevo autor: <input type="text" name="autor"></label></p>
+    <p><label>Nuevo año: <input type="number" name="anio"></label></p>
+    <p>
+        <label>Disponible:
+            <select name="disponible">
+                <option value="">(no cambiar)</option>
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </label>
+    </p>
+    <p><input type="submit" value="Actualizar"></p>
+</form>
+
+<h1>Eliminar un libro</h1>
+<form action="Act342BuscaLibros.php" method="post">
+    <input type="hidden" name="accion" value="eliminar">
+    <p><label>ID del libro: <input type="number" name="id" required></label></p>
+    <p><input type="submit" value="Eliminar"></p>
+</form>
+
+<h1>Añadir un libro</h1>
+<form action="Act342BuscaLibros.php" method="post">
+    <input type="hidden" name="accion" value="anadir">
+    <p><label>ID: <input type="number" name="id" required></label></p>
+    <p><label>Título: <input type="text" name="titulo" required></label></p>
+    <p><label>Autor: <input type="text" name="autor" required></label></p>
+    <p><label>Año: <input type="number" name="anio" required></label></p>
+    <p><label><input type="checkbox" name="disponible" value="1"> Disponible</label></p>
+    <p><input type="submit" value="Añadir"></p>
+</form>
+
+</body>
+</html>
