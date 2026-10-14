@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <style></style>
+  <body>
+    
+<h1>Búsqueda en la biblioteca</h1>
+
+    <form action="342BusquedaBBDD.php" method="post">
+
+        <p>
+
+            <label for="busqueda">Texto a buscar:</label>
+
+            <input type="text" id="busqueda" name="busqueda">
+
+        </p>
+
+        <p>
+
+            <label for="campo">Buscar en:</label>
+
+            <select id="campo" name="campo">
+
+                <option value="titulo">Título</option>
+
+                <option value="autor">Autor</option>
+
+            </select>
+
+        </p>
+
+        <p>
+
+            <input type="checkbox" id="disponibles" name="disponibles" value="1">
+
+            <label for="disponibles">Mostrar solo los libros disponibles</label>
+
+        </p>
+
+        <p><input type="submit" value="Buscar"></p>
+
+    </form>
+  </body>
+</html>
