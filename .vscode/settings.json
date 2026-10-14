@@ -1,0 +1,16 @@
+
+{
+    "php.validate.executablePath": "C:\\xampp\\php\\php.exe",
+    "php.debug.executablePath": "C:\\xampp\\php\\php.exe",
+    "code-runner.runInTerminal": true,
+    "code-runner.defaultLanguage": "javascript",
+    "files.autoSave": "onWindowChange",
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSave": true,
+    "code-runner.executorMap": {
+        "php": "C:\\xampp\\php\\php.exe"
+    },
+    "liveServer.settings.port": 5501
+}
