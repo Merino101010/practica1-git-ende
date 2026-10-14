@@ -1,4 +1,9 @@
 <?php
+
+use function PHPSTORM_META\type;
+
+/*Activar String types*/
+
 class coche
 {
 
@@ -15,11 +20,11 @@ class coche
     }
 
 
-    public function acelerar($cantidad)
+    public function acelerar(int $cantidad)
     {
         $this->velocidad = $this->velocidad + $cantidad;
     }
-    public function frenar($cantidad)
+    public function frenar(int $cantidad)
     {
         $this->velocidad = $this->velocidad - $cantidad;
     }
