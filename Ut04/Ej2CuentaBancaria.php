@@ -3,7 +3,7 @@
 declare(strict_types=1);
 class BankAccount
 {
-
+    public static $tipoCliente = "Estándar";
     public String $owner;
     private float $balance;
 
@@ -48,7 +48,7 @@ class BankAccount
 
     public function __toString(): string
     {
-        return "Owner " . $this->owner . " balance " . $this->balance  . "\n";
+        return "Owner " . $this->owner . " balance " . $this->balance . " tipo cliente " . self::$tipoCliente  . "\n";
     }
 }
 
