@@ -14,7 +14,7 @@ class BankAccount
     }
 
 
-    public function deposit(float $importe)
+    public function deposit(float $importe): void
     {
 
 
@@ -27,7 +27,7 @@ class BankAccount
     }
 
 
-    public function withdraw(float $importe)
+    public function withdraw(float $importe): void
     {
 
 
@@ -45,7 +45,15 @@ class BankAccount
         return $this->balance;
     }
 
-
+    function transfer(BankAccount $otra_cuenta, float $importe): void
+    {
+        if ($importe > 0 && $importe < $this->balance) {
+            $this->balance -= $importe;
+            $otra_cuenta->deposit($importe);
+        } else {
+            echo "Operacion no aceptada saldo insuficiente";
+        }
+    }
     public function __toString(): string
     {
         return "Owner " . $this->owner . " balance " . $this->balance . " tipo cliente " . self::$tipoCliente  . "\n";
