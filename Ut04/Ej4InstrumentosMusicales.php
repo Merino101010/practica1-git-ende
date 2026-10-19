@@ -25,7 +25,7 @@ class Guitarra extends Instrumento
 {
     private $cuerdas;
 
-    #[Override]
+
     public function __construct($nombre, $cuerdas)
     {
         parent::__construct($nombre);
@@ -35,6 +35,7 @@ class Guitarra extends Instrumento
     #[Override]
     public function tocar(): string
     {
+        echo "TOcando la guitarra \n";
         return "TOcando la guitarra";
     }
 }
@@ -42,7 +43,6 @@ class Piano extends Instrumento
 {
     private $teclas;
 
-    #[Override]
     public function __construct($nombre, $teclas)
     {
         parent::__construct($nombre);
@@ -52,6 +52,16 @@ class Piano extends Instrumento
     #[Override]
     public function tocar(): string
     {
+        echo "Tocando el piano \n";
         return "Tocando el piano";
     }
+}
+
+$elPiano = new Piano("El piano", 88);
+$laGuitarra = new Guitarra("La guitarra", 6);
+
+$array = [$elPiano, $laGuitarra];
+
+foreach ($array as $instrumento) {
+    $instrumento->tocar();
 }
