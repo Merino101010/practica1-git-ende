@@ -58,6 +58,10 @@ class BankAccount extends Exception
             echo "Operacion no aceptada saldo insuficiente";
         }
     }
+
+    /*TODO GET TOTAL CUENTAS METODO ESTATICO CUENTABANCARIA::GETTOTALCUENTAS*/
+    /*TODO TRY CATCH TRES ERRORES RETIRAR 50E INGRESAR 20E INTENTAR CUENTA1 SALDO 10000000*/
+
     public function __toString(): string
     {
         return "Owner " . $this->owner . " balance " . $this->balance . " tipo cliente " . self::$tipoCliente . "\n";
