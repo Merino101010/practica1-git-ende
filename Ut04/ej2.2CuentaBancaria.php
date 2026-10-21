@@ -3,14 +3,20 @@
 declare(strict_types=1);
 class BankAccount extends Exception
 {
-    public static $tipoCliente = "Estándar";
+    private string $iban = "";
+    public string $tipoCliente = "";
     public string $owner;
     private float $balance;
+    private static int $numcuentas = 0;
 
-    public function __construct(string $owner)
+    public function __construct(string $owner, string $iban)
     {
+
+        $this->iban = $iban;
+        $this->tipoCliente = "Estandar";
         $this->owner = $owner;
         $this->balance = 0.0;
+        self::$numcuentas++;
     }
 
 
@@ -21,8 +27,8 @@ class BankAccount extends Exception
 
         if ($importe < 0) {
 
-            echo "No se puede ingresar un importe negativo \n";
-            RuntimeException("No se puede ingresar un importe negativo \n", 1);
+            //  echo "No se puede ingresar un importe negativo \n";
+            new RuntimeException("No se puede ingresar un importe negativo \n", 1);
 
         } else {
             $this->balance = $this->balance + $importe;
@@ -35,7 +41,7 @@ class BankAccount extends Exception
 
 
         if ($this->balance - $importe < 0) {
-            echo "No puedes retirar mas saldo que el balance total que tienes \n";
+            // echo "No puedes retirar mas saldo que el balance total que tienes \n";
             new InvalidArgumentException("No se puede ingresar un importe negativo \n", 1);
         } else {
             $this->balance = $this->balance - $importe;
@@ -60,18 +66,33 @@ class BankAccount extends Exception
     }
 
     /*TODO GET TOTAL CUENTAS METODO ESTATICO CUENTABANCARIA::GETTOTALCUENTAS*/
-    /*TODO TRY CATCH TRES ERRORES RETIRAR 50E INGRESAR 20E INTENTAR CUENTA1 SALDO 10000000*/
+    public static function getTotalCuentas(): int
+    {
+        return self::$numcuentas;
+    }
+
+
+
 
     public function __toString(): string
     {
-        return "Owner " . $this->owner . " balance " . $this->balance . " tipo cliente " . self::$tipoCliente . "\n";
+        return "owner " . $this->owner . " balance " . $this->balance . "iban " . $this->iban . "\n";
     }
 }
 
 
-$miCuenta = new BankAccount("Alvaro");
-$miCuenta->deposit(2500.0);
-$miCuenta->withdraw(10000.0);
-$miCuenta->getBalance();
-echo $miCuenta;
+$cuenta1 = new BankAccount("Alvaro", "1");
+$cuenta2 = new BankAccount("Jorge", "2");
+$cuenta1->deposit(2500.0);
+$cuenta1->withdraw(10000.0);
+$cuenta1->getBalance();
+
+/*TODO TRY CATCH TRES ERRORES RETIRAR 50E INGRESAR 20E INTENTAR CUENTA1 SALDO 10000000*/
+try {
+    $cuenta1->withdraw(10000.0);
+} catch (InvalidArgumentException $ret) {
+    echo $ret->getMessage();
+
+}
+echo "total cuentas " . BankAccount::getTotalCuentas();
 ?>
