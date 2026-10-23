@@ -12,7 +12,7 @@ class Gerente extends Empleado{
      
         public function calcularSalario():float{
                 
-            return $horasExtra*self::PRECIO_HORA;
+            return parent::calcularSalario()*self::PRECIO_HORA*$this->horasExtra;
         }
 
 
