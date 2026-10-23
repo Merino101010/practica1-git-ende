@@ -19,6 +19,18 @@ class Empleado
     }
 
     public function calcularSalario():float{
+        for($j=0; $j<$tamanoArray-1; $j++){
+            for($i=0; $i<$tamanoArray-$j; $j++){
+                if($num[i]<$num[$i+1]){
+                $aux=$num[$i+1];
+                $num[$i+1] = num[$i];
+                $num[$i]=$aux;
+
+                }
+            }
+        }
+
+
         return $this->salarioBase;
     }
 
