@@ -17,7 +17,7 @@ class Gerente extends Empleado{
         public function calcularSalario():float{
          parent::calcularSalario();
          
-         ECHO "Resultado " + $this->personasACArgo*self::PLUS_POR_PERSONA;
+         ECHO "Resultado " . $this->personasACArgo*self::PLUS_POR_PERSONA;
 
         }
 
