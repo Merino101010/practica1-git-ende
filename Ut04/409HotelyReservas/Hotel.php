@@ -32,6 +32,7 @@ class Hotel{
 
                             }else{
                                 array_push($this->reservas , new Reserva($cliente, $habitacion,$entrada,$salida)) ;
+                                return  new Reserva($cliente, $habitacion,$entrada,$salida);
                                 
                             }
                         }
