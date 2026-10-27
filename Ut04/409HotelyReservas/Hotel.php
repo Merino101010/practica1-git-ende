@@ -1,67 +1,49 @@
 <?php
-class Hotel{
+class Hotel
+{
     private string $nombre;
-    private   $habitaciones;
-    private   $reservas ;
-    public function __construct(string $nombre){
+    private  array $habitaciones;
+    private  array $reservas;
+    public function __construct(string $nombre)
+    {
         $this->nombre = $nombre;
         $this->habitaciones = [];
         $this->reservas = [];
     }
 
-    public function getNombre():string {
+    public function getNombre(): string
+    {
         return $this->nombre;
     }
 
-    public function agregarHabitacion(Habitacion $habitacion){
-        $this->habitaciones = $habitacion;
-
+    public function agregarHabitacion(Habitacion $habitacion): void
+    {
+        //$this->habitaciones[] = $habitacion;
+        array_push($this->habitaciones, $habitacion);
     }
 
-    public function reservar(string $cliente , int $numHabitacion, DateTimeImmutable $entrada, DateTimeImmutable $salida):Reserva{
+    public function reservar(string $cliente, int $numHabitacion, DateTimeImmutable $entrada, DateTimeImmutable $salida): Reserva
+    {
         $numero = 0;
-        foreach($this->habitaciones as $habitacion){
-            if($habitacion instanceof Habitacion){
-                $numero = $habitacion->getNumero();
-                if($numero==$numHabitacion){
-                    foreach($this->reservas as $reserva){
-                        if($reserva instanceof Reserva){
-                            if($reserva->getHabitacion()==$habitacion){
-                                echo "Esa reserva ya existe busque otro numero de habitacion";
-                                break;
+        foreach ($this->habitaciones as $habitacion) {
 
-                            }else{
-                                array_push($this->reservas , new Reserva($cliente, $habitacion,$entrada,$salida)) ;
-                                return  new Reserva($cliente, $habitacion,$entrada,$salida);
-                                
-                            }
-                        }
+            $numero = $habitacion->getNumero();
+            if ($numero == $numHabitacion) {
+                echo "Esa reserva ya existe busque otro numero de habitacion";
+                throw new Exception("Esa reserva ya existe busque otro numero de habitacion");
+            } else {
+                foreach ($this->reservas as $reserva) {
 
 
-                    }
-                    
+                    array_push($this->reservas, new Reserva($cliente, $habitacion, $entrada, $salida));
+                    return  new Reserva($cliente, $habitacion, $entrada, $salida);
                 }
-                
             }
-                
-            
-        
         }
-         
-
+        throw new Exception("Esa reserva ya existe busque otro numero de habitacion");
     }
 
-    public function ingresosPrevistos():float{
-        
+    public function ingresosPrevistos(): float {}
 
-    }
-
-    public function reservasDe(string $cliente):Reserva{
-
-    }
-
-
+    public function reservasDe(string $cliente): Reserva {}
 }
-
-
-?>
