@@ -15,6 +15,15 @@ $config = [
     'clave'   => '',
 
 ];
+$opciones = [
+
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, // error SQL = excepción
+
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,       // filas con claves por nombre
+
+    PDO::ATTR_EMULATE_PREPARES   => false,                  // preparadas nativas del servidor
+
+];
 
 $dsn = "mysql:host={$config['host']};port={$config['puerto']};"
 
@@ -105,10 +114,10 @@ $stmt = $pdo->prepare(
     'INSERT INTO productos (nombre, categoria , precio , stock )  VALUES(:nombre , :categoria , :precio , :stock) '
 ) ;
 
-$stmt->execute(['nombre' => "ProductoNuevo" , 'categoria'=>"Cables", 'precio' => 100, 'stock' =>30]);
+//$stmt->execute(['nombre' => "ProductoNuevo" , 'categoria'=>"Cables", 'precio' => 100, 'stock' =>30]);
 
 
-
+echo $pdo->lastInsertId();
 
 
  
@@ -118,3 +127,65 @@ $stmt->execute(['nombre' => "ProductoNuevo" , 'categoria'=>"Cables", 'precio' =>
 //$stmt->execute(['categoria' => "' OR '1'='1", 'maximo' => 100000, 'minimo'>=10000]);
 
 //echo 'Filas devueltas con la inyección: ' . count($stmt->fetchAll()) . "\n";
+
+
+/*==============EJEMPLO 6 ================ */
+// fetch(): devuelve UNA fila en cada llamada y false cuando no quedan
+
+$stmt = $pdo->query('SELECT id, nombre, precio FROM productos ORDER BY id LIMIT 3');
+
+while ($fila = $stmt->fetch()) {
+
+    echo "#{$fila['id']} {$fila['nombre']} ({$fila['precio']} €)\n";
+
+}
+
+var_dump($stmt->fetch()); // ya no quedan filas
+
+ 
+
+// fetchAll(PDO::FETCH_ASSOC): todas las filas en un array de arrays asociativos
+
+echo "======fetch association arrays asociativos =====\n";
+$sql = 'SELECT nombre, precio FROM productos ORDER BY id LIMIT 2';
+
+$asociativas = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+print_r($asociativas);
+
+ 
+
+// fetchAll(PDO::FETCH_NUM): mismas filas, pero con índices 0, 1, 2...
+echo "======fetch association con indices0,1,2 =====\n";
+
+$numericas = $pdo->query($sql)->fetchAll(PDO::FETCH_NUM);
+
+print_r($numericas);
+
+echo "Primer producto: {$numericas[0][0]} a {$numericas[0][1]} €\n";
+
+
+
+
+/*EJEMPLO 6 PRACTICAR FETCH ALLL*/
+
+echo " fetchAll(PDO::FETCH_NUM) \n";
+$sql = 'SELECT nombre, precio FROM productos ORDER BY id LIMIT 2';
+
+$asociativas = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($asociativas as $clave =>$valor) {
+
+    echo "#{$clave} {$valor['nombre']} ({$valor['precio']} €)\n";
+
+}
+
+
+
+echo " fetchAll(PDO::FETCH_KEY_PAIR) \n";
+$sql = 'SELECT ID, nombre FROM productos ';
+
+$asociativas = $pdo->query($sql)->fetchAll(PDO::FETCH_KEY_PAIR);
+
+var_dump($asociativas)  ;
+/*Devuelve un array con clavaes indices y valores de los nombres ademas te dice los espacios que ocupa el string(caracteres y espacios) de cada nombre*/
