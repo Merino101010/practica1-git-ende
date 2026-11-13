@@ -1,6 +1,7 @@
 <?php 
 // Datos de conexión (en un proyecto real, en un archivo fuera de htdocs)
 
+
 $config = [
 
     'host'    => '127.0.0.1',
