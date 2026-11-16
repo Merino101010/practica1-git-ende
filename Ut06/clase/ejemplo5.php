@@ -189,3 +189,10 @@ $asociativas = $pdo->query($sql)->fetchAll(PDO::FETCH_KEY_PAIR);
 
 var_dump($asociativas)  ;
 /*Devuelve un array con clavaes indices y valores de los nombres ademas te dice los espacios que ocupa el string(caracteres y espacios) de cada nombre*/
+
+
+echo " ************ Sin fetch sin fetch all reecorrer datos **************\n";
+/*Sin fetch sin fetch all reecorrer datos*/
+foreach($pdo->query($sql) as $fila){
+    var_dump($fila) ;
+}
