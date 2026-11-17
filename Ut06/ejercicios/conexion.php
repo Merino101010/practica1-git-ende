@@ -26,6 +26,7 @@ try {
 }catch(Exception $e){
     
        
+    header("Location: ../404error.php");
 
     
     $e->getMessage();
@@ -42,6 +43,7 @@ try {
     
         //error_log("NO disponible");
     }
+
     
 }
 
