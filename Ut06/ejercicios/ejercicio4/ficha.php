@@ -4,8 +4,8 @@ require __DIR__ .  '/../conexion.php';
 
 $id = $_GET['id'];
 
-if(!filter_var($id,FILTER_VALIDATE_INT)){
-    echo "<p>Identificador no validoi</p>";
+if(!filter_var($id,FILTER_VALIDATE_INT, ['options' => ['min_range'=>1] ])){
+    echo "<p>Identificador no valido</p>";
     exit;
 }
 
