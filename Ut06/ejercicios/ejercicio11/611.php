@@ -15,32 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    $sql2 = "SELECT id, nombre, email, contra from usuarios";
-    $resultadoValores2 = $conexion->prepare($sql2);
-    $resultadoValores2->execute();
-    $usuarios = $resultadoValores2->fetchObject();
 
-    if (isset($_GET["accion"])) {
 
-        if ($_GET["accion"] === "borrar") {
-            if (isset($_GET["id"])) {
-                $borrar = $conexion->prepare("Delete from usuarios where id = :id");
-                $borrar->execute(["id" => $_GET["id"]]);
-            }
-        }
 
-        if ($_GET['accion'] === 'editar') {
-            if (isset($_GET["id"])) {
-                $editar = $conexion->prepare("update usuarios set nombre = :nada where id = :id");
-                $editar->execute([":nada" => "", ":id" => $_GET["id"]]);
-            }
-
-            if (isset($_GET["nombreNuevo"])) {
-                $peditar = $conexion->prepare("Update usuarios set nombre = :nuevo where id = :id");
-                $peditar->execute([":nuevo" => $_GET["nombreNuevo"], ":id" => $_GET["id"]]);
-            }
-        }
-    }
 
     echo '<a href="611.html">Añadir usuario</a>';
 
@@ -53,10 +30,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </tr>";
 
 
-    //pdoquerysqlfila
-    foreach ($conexion->query($sql2) as $usuario) {
-        /*todo cambiar a td*/
-        echo "
+
+
+
+    echo "</table>";
+}
+if (isset($_GET["accion"])) {
+
+    if ($_GET["accion"] === "borrar") {
+        if (isset($_GET["id"])) {
+            $borrar = $conexion->prepare("Delete from usuarios where id = :id");
+            $borrar->execute(["id" => $_GET["id"]]);
+        }
+    }
+
+    if ($_GET['accion'] === 'editar') {
+        if (isset($_GET["id"])) {
+            $editar = $conexion->prepare("update usuarios set nombre = :nada where id = :id");
+            $editar->execute([":nada" => "", ":id" => $_GET["id"]]);
+        }
+
+        if (isset($_GET["nombreNuevo"])) {
+            $peditar = $conexion->prepare("Update usuarios set nombre = :nuevo where id = :id");
+            $peditar->execute([":nuevo" => $_GET["nombreNuevo"], ":id" => $_GET["id"]]);
+        }
+    }
+}
+//pdoquerysqlfila
+$sql2 = "SELECT id, nombre, email, contra from usuarios";
+$resultadoValores2 = $conexion->prepare($sql2);
+$resultadoValores2->execute();
+$usuarios = $resultadoValores2->fetchObject();
+foreach ($conexion->query($sql2) as $usuario) {
+    /*todo cambiar a td*/
+    echo "
         <tr>
         
             <th>" . htmlspecialchars($usuario["id"]) . "</th>
@@ -65,8 +72,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <th><a href='611.php?accion=editar&id='" . $usuario['id'] . "'>Editar</a></th>
                 <th><a href='611.php?accion=borrar&id='" . $usuario['id'] . "'>borrar</a></th>
         </tr> ";
-    }
-
-
-    echo "</table>";
 }
