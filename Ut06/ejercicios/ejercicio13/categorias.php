@@ -13,7 +13,7 @@ if ($hayFilas > 0) {
     echo "<p>Hay $hayFilas  categorias</p>";
     foreach ($categorias as $categoria) {
 
-        echo "<p> <a href='categorias.php?categoria=" . htmlspecialchars($categoria) . "'>$categoria</a> </p>";
+        echo "<h1> <a href='categorias.php?categoria=" . htmlspecialchars($categoria) . "'>$categoria</a> </h1>";
     }
 }
 /*Vista B*/
@@ -28,8 +28,8 @@ if (isset($categoria)) {
     echo "<p>$categoria</p>";
     foreach ($productos as $producto) {
 
-        echo "<p>{$producto["nombre"]}  </p> ";
-        echo '<p><a href="../ejercicio12/ficha.php?id=' . $producto["id"] . '">' . $producto["nombre"] . '</a></p>';
+        echo "<h2>{$producto["nombre"]}  </h2> ";
+        echo '<h2><a href="../ejercicio12/ficha.php?id=' . $producto["id"] . '">' . $producto["nombre"] . '</a></h2>';
         echo "\n";
     }
 }
