@@ -9,5 +9,5 @@ $resultadoValores->execute();
 $productos = $resultadoValores->fetchAll();
 foreach ($productos as $producto) {
     echo 'ID '  . $producto["id"] . "\n";
-    echo ' <a href="ficha.php?id= "' . $producto["id"] . '" >nombre</a> '  . "\n";
+    echo ' <a  href="./ficha.php?id=' . htmlspecialchars($producto["id"]) . '" >nombre</a> '  . "\n";
 }
